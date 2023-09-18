@@ -1,19 +1,55 @@
-<html>
+<!DOCTYPE html>
+<html lang="ja">
 <head>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-    <title>33rd シングル５期生個人PV再生数カウント</title>
+  <meta charset="utf-8">
+　<title>グラフ</title> 
 </head>
-<br>
-<br>
-<div class='container'>
-    <div class="'raw">
-        <h2>乃木坂46 33rdシングル ５期生個人ＰＶ予告再生数</h2>
-        <img src="access_count.png" width='800'>
-    </div>
-    <br>
-    <br>
-    <div class="'raw">
-        <img src="access_count_up.png" width='800'>
-    </div>
-</div>
+<body>
+  <h1>棒グラフ</h1>
+  <canvas id="myBarChart"></canvas>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
+  
+  <script>
+  var ctx = document.getElementById("myBarChart");
+  var myBarChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: ['8月1日', '8月2日', '8月3日', '8月4日', '8月5日', '8月6日', '8月7日'],
+      datasets: [
+        {
+          label: 'A店 来客数',
+          data: [62, 65, 93, 85, 51, 66, 47],
+          backgroundColor: "rgba(219,39,91,0.5)"
+        },{
+          label: 'B店 来客数',
+          data: [55, 45, 73, 75, 41, 45, 58],
+          backgroundColor: "rgba(130,201,169,0.5)"
+        },{
+          label: 'C店 来客数',
+          data: [33, 45, 62, 55, 31, 45, 38],
+          backgroundColor: "rgba(255,183,76,0.5)"
+        }
+      ]
+    },
+    options: {
+      title: {
+        display: true,
+        text: '支店別 来客数'
+      },
+      scales: {
+        yAxes: [{
+          ticks: {
+            suggestedMax: 100,
+            suggestedMin: 0,
+            stepSize: 10,
+            callback: function(value, index, values){
+              return  value +  '人'
+            }
+          }
+        }]
+      },
+    }
+  });
+  </script>
+</body>
 </html>
