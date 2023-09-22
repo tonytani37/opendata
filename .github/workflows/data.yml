@@ -1,19 +1,47 @@
-name: Push file to GitHub repository
+name: Push File to GitHub Repository
 
 on:
+  workflow_dispatch:  # 手動で実行する場合
   push:
     branches:
-      - main
+      - main  # メインブランチにプッシュされた場合
 
 jobs:
-  push:
+  push_file:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Check out code
+      - name: Checkout Repository
         uses: actions/checkout@v2
 
-      - name: Push file
+      - name: Create and Push File
         run: |
-          git add .
-          git commit -m "Added new file"
+          echo "This is a sample file." > sample.txt  # ファイルを作成
+          git config --local user.email "actions@github.com"
+          git config --local user.name "GitHub Actions"
+          git add sample.txt
+          git commit -m "Add sample.txt"
           git push origin main
+
+
+# ############################
+
+# name: Push file to GitHub repository
+
+# on:
+#   push:
+#     branches:
+#       - main
+
+# jobs:
+#   push:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Check out code
+#         uses: actions/checkout@v2
+
+#       - name: Push file
+#         run: |
+#           git add .
+#           git commit -m "Added new file"
+#           git push origin main
