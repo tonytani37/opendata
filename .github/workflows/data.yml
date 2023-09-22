@@ -1,27 +1,27 @@
-name: Push File to GitHub Repository
+# name: Push File to GitHub Repository
 
-on:
-  workflow_dispatch:  # 手動で実行する場合
-  push:
-    branches:
-      - main  # メインブランチにプッシュされた場合
+# on:
+#   workflow_dispatch:  # 手動で実行する場合
+#   push:
+#     branches:
+#       - main  # メインブランチにプッシュされた場合
 
-jobs:
-  push_file:
-    runs-on: ubuntu-latest
+# jobs:
+#   push_file:
+#     runs-on: ubuntu-latest
 
-    steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v2
+#     steps:
+#       - name: Checkout Repository
+#         uses: actions/checkout@v2
 
-      - name: Create and Push File
-        run: |
-          echo "This is a sample file." > sample.txt  # ファイルを作成
-          git config --local user.email "actions@github.com"
-          git config --local user.name "GitHub Actions"
-          git add sample.txt
-          git commit -m "Add sample.txt"
-          git push origin main
+#       - name: Create and Push File
+#         run: |
+#           echo "This is a sample file." > sample.txt  # ファイルを作成
+#           git config --local user.email "actions@github.com"
+#           git config --local user.name "GitHub Actions"
+#           git add sample.txt
+#           git commit -m "Add sample.txt"
+#           git push origin main
 
 
 # ############################
